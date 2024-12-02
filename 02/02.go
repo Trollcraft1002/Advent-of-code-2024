@@ -2,8 +2,9 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"os"
+	"strconv"
+	"strings"
 )
 
 func chcek(e error) {
@@ -22,10 +23,19 @@ func main() {
 
 	for scanner.Scan() {
 		t := scanner.Text()
-		fmt.Println(t)
-		arr := t.Split(" ")
-		for _, v := range arr {
-			fmt.Println(v)
+		arr := strings.Split(t, " ")
+		var int_arr []int
+
+		for i := range arr {
+			v, err := strconv.Atoi(arr[i])
+			chcek(err)
+			int_arr = append(int_arr, v)
 		}
+
+			for  i := range int_arr {
+				for j := i; i < len(arr); i++ {
+					if(j >)
+				}
+			}
 	}
 }
