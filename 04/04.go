@@ -94,11 +94,24 @@ func main() {
 }
 
 func part2(data [][]string) {
+	sum := 0
 	for r := range data {
 		for i := range data[r] {
-			if data[r][i] == "A" {
 
+			//if not near wall
+			if r != 0 && i != 0 && r != len(data)-1 && i != len(data[r])-1 {
+				//	M	.	S
+				//	.	A	.
+				//	M	.	S
+				if data[r][i] == "A" {
+					if (data[r-1][i-1] == "M" && data[r+1][i+1] == "S") || (data[r-1][i-1] == "S" && data[r+1][i+1] == "M") {
+						if (data[r+1][i-1] == "M" && data[r-1][i+1] == "S") || (data[r+1][i-1] == "S" && data[r-1][i+1] == "M") {
+							sum++
+						}
+					}
+				}
 			}
 		}
 	}
+	fmt.Println(sum)
 }
